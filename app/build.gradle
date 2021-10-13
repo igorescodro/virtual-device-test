@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -33,11 +35,22 @@ android {
 
     testOptions {
         devices {
-            pixel2api29(com.android.build.api.dsl.ManagedVirtualDevice) {
+            pixel2api29(ManagedVirtualDevice) {
                 device = "Pixel 2"
                 apiLevel = 29
                 systemImageSource = "google"
                 abi = "x86"
+            }
+            nexus9api30(ManagedVirtualDevice) {
+                device = "Nexus 9"
+                apiLevel = 30
+                systemImageSource = "google"
+                abi = "x86"
+            }
+        }
+        deviceGroups {
+            phoneAndTablet {
+                targetDevices.addAll(devices.pixel2api29, devices.nexus9api30)
             }
         }
     }
