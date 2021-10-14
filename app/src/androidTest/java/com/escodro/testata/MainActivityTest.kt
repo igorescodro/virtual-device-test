@@ -28,6 +28,8 @@ class MainActivityTest {
 
     @Test
     fun test_Assert() {
+        launchActivity<MainActivity>()
+        onView(withText("Hello World!")).check(matches(isDisplayed()))
         assert(true) // A dummy test to check what happens when a test fail. ;)
     }
 }
