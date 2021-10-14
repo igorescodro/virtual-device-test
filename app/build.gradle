@@ -34,6 +34,9 @@ android {
     }
 
     testOptions {
+        emulatorSnapshots {
+            enableForTestFailures = true
+        }
         devices {
             pixel2api29(ManagedVirtualDevice) {
                 device = "Pixel 2"
